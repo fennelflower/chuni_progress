@@ -1,0 +1,31 @@
+{
+  "db_host": "127.0.0.1",
+  "db_port": 5432,
+  "db_name": "chunithm_progress",
+  "db_user": "postgres",
+  "db_password": "CHANGE_ME",
+  "score_csv_path": "data/raw/chunithm-scores.csv",
+  "jacket_dir": "data/jackets",
+  "output_dir": "data/outputs",
+  "import_difficulties": [
+    "master",
+    "ultima"
+  ],
+  "min_level": 14.0,
+  "default_board_level": 15,
+  "default_min_grade": "SSS",
+  "default_constant_source": "cn",
+  "wiki_song_list_urls": [
+    "https://wikiwiki.jp/chunithmwiki/CHUNITHM%20X-VERSE-X%20%E6%A5%BD%E6%9B%B2%E4%B8%80%E8%A6%A7%28Lv%E9%A0%861%29#Lv15"
+  ],
+  "fetch_min_level": 14.0,
+  "jacket_max_aspect_ratio": 1.03,
+  "skip_existing_jackets": true,
+  "request_timeout_seconds": 30,
+  "request_delay_seconds": 0.8,
+  "request_max_retries": 3,
+  "bot_host": "127.0.0.1",
+  "bot_port": 8088,
+  "napcat_api_url": "http://127.0.0.1:3001",
+  "napcat_access_token": "CHANGE_ME"
+}

@@ -1,0 +1,52 @@
+# Local secrets
+config/config.json
+config/*.local.json
+.env
+.env.*
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local data and generated assets
+data/raw/*
+data/jackets/*
+data/outputs/*
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+
+# Keep data directory structure if placeholder files are added later
+!data/
+!data/raw/.gitkeep
+!data/jackets/.gitkeep
+!data/outputs/.gitkeep
+
+# Logs and temp files
+*.log
+*.tmp
+*.bak
+*.swp
+*.zip
+*.7z
+*.tar
+*.tar.gz
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
