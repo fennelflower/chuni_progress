@@ -23,19 +23,21 @@
 ## 文件结构
 
 ```text
-bot/                       QQ bot HTTP 回调和消息处理
-config/config.example.json 配置模板
-pyrightconfig.json         Pylance/Pyright 导入路径配置
-data/raw/                  本地 CSV 和 bot 上传缓存
-data/jackets/              抓取的曲绘
-data/outputs/              生成的图片
-scripts/auth.py            用户注册、登录、权限管理
-scripts/db.py              PostgreSQL 连接
-scripts/fetch_image.py     抓取 wiki 曲目信息和曲绘
-scripts/generate_board.py  生成进度图
-scripts/init_db.py         初始化数据库表
-scripts/upload_score.py    导入成绩 CSV
-sql/init_tables.sql        建表 SQL
+bot/                                QQ bot HTTP 回调和消息处理
+config/config.example.json          配置模板
+pyrightconfig.json                  Pylance/Pyright 导入路径配置
+data/raw/                           本地 CSV 和 bot 上传缓存
+data/jackets/                       抓取的曲绘
+data/outputs/                       生成的图片
+scripts/auth.py                     用户注册、登录、权限管理
+scripts/db.py                       PostgreSQL 连接
+scripts/fetch_image.py              抓取 wiki 曲目信息和曲绘
+scripts/generate_board.py           生成进度图
+scripts/init_db.py                  初始化数据库表
+scripts/rebuild_cn_constants.py     重新导入 CSV 以补全/更新国服定数
+scripts/refetch_bad_jackets.py      重新抓取可疑或错误曲绘
+scripts/upload_score.py             导入成绩 CSV
+sql/init_tables.sql                 建表 SQL
 ```
 
 ## 安装
@@ -98,6 +100,14 @@ python scripts/fetch_image.py
 ```powershell
 python scripts/fetch_image.py --no-download
 ```
+
+## 曲绘维护脚本
+
+```powershell
+python scripts/refetch_bad_jackets.py
+```
+
+`refetch_bad_jackets.py` 用于重新抓取可疑曲绘. 它会检查已有曲绘是否不存在、打不开, 或长宽比超过 `config/config.json` 中的 `jacket_max_aspect_ratio`; 对这些可疑项, 脚本会根据数据库里的 `source_url` 回到曲目详情页重新寻找更像正方形曲绘的图片, 下载后更新 `songs.jacket_path`, 并删除旧的坏图片. 适合发现进度图里某些曲绘明显抓错时运行.
 
 ## CSV 适配说明
 
